@@ -1,0 +1,31 @@
+<!-- toolbar -->
+
+<mat-toolbar color="primary">
+  <button [mat-menu-trigger-for]="appMenu" mat-icon-button class="example-icon" >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="example-spacer"></span>
+  <button (click) ="opened=!opened"mat-icon-button class="example-icon favorite-icon" >
+    <mat-icon>settings</mat-icon>
+  </button>
+  </mat-toolbar>
+  <!-- sidenav -->
+  <mat-sidenav-container>
+    <mat-sidenav [(opened)]="opened" mode="side">
+      <mat-list>
+        <mat-list-item><a> item1</a></mat-list-item>
+        <mat-list-item><a> item2</a></mat-list-item>
+        <mat-list-item><a> item3</a></mat-list-item>
+      </mat-list>
+  </mat-sidenav>
+    <mat-sidenav-content >
+      <h3>Angular</h3>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt voluptatum optio, illo reiciendis laborum, porro pariatur assumenda possimus iusto debitis, architecto quo eius ipsam  porro pariatur assumenda possimus iusto debitis, architecto quo eius ipsam</p><br><br>
+      <a routerLink="/screen2"><img src={{image}} ></a>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae obcaecati quis voluptatem iusto aliquam odio distinctio error laudantium, esse fugiat velit qui, ex explicabo fuga porro, sequi excepturi fugit id.</p>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+    <!-- Menu content -->
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item>Logout</button>
+  </mat-menu>

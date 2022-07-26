@@ -1,0 +1,67 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary">
+    <button [mat-menu-trigger-for]="appMenu" mat-icon-button class="example-icon" >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" (click)="show()">Add</button>
+
+<!-- Modal -->
+<div  [style.display]="showModal ? 'block' : 'none'"  class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="exampleModalLabel">User Detail</h5>
+      </div>
+      <div class="modal-body">
+        <!-- Form -->
+        <form [formGroup]="Contactform" (ngSubmit)="OnSubmit(Contactform.value)">
+          <div class="mb-2">
+
+            <label for="Name">Name</label>
+            <input type="text" name="name" class="form-control" formControlName="UserName"/>
+          <!-- Validation err msg -->
+            <div *ngIf="check.UserName.invalid && (check.UserName.touched || check.UserName.dirty)">
+                <span class=text-danger *ngIf=" check.UserName.errors?.required">Username required..</span>
+                <span class=text-danger *ngIf=" check.UserName.errors?.minlength">Username atleast have 6 characters..</span>
+            </div>
+          
+          
+          <div class="mb-2">
+            <label for="email">Email</label>
+            <input type ="email" name="email" class="form-control" formControlName="Email"/>
+            <div *ngIf="check.UserName.invalid && (check.Email.touched || check.Email.dirty)">
+              <span class=text-danger *ngIf=" check.Email.errors?.required">Email required..</span>
+              <span class=text-danger *ngIf=" check.Email.errors?.email">Enter a valid email..</span>
+          </div>
+          </div>
+          <button type="submit" class="btn btn-primary bttn">Submit</button>
+          </div>
+        </form>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- menu content -->
+    </mat-toolbar>
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item>Home</button>
+        <button mat-menu-item>Back</button>
+        <button mat-menu-item>Logout</button>
+   </mat-menu>
+
+
+   <!-- listgroup -->
+   <div class="container">
+    <div class="heading">
+      <h3>User Detail</h3>
+    </div>
+    <ul class="list-group mt-3">
+      <li class="list-group-item"> Username :{{UserName}}</li>
+      <li class="list-group-item"> Email :{{Email}}</li>
+    </ul>
+    </div>
